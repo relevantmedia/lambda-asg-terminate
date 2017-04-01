@@ -1,0 +1,17 @@
+{
+  "name": "ASGfunction",
+  "version": "0.1.0",
+  "description": "Lambda code for the autoscaling hook triggers invoked when autoscaling events of launching and terminating instance occur",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "zip": "zip -r ../ASGfunction.zip *",
+    "s3": "aws s3 cp ../ASGfunction.zip s3://cru-lambda-functions",
+    "updateLambda": "aws lambda update-function-code --function-name \"LambdaASGFunction\" --s3-bucket \"cru-lambda-functions\" --s3-key \"ASGfunction.zip\"",
+    "deploy": "npm run zip && npm run s3 && npm run updateLambda"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.20.0",
+    "events": "^1.1.1"
+  }
+}
