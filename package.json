@@ -6,8 +6,8 @@
   "license": "MIT",
   "scripts": {
     "zip": "zip -r ../ASGfunction.zip *",
-    "s3": "aws s3 cp ../ASGfunction.zip s3://cru-lambda-functions",
-    "updateLambda": "aws lambda update-function-code --function-name \"LambdaASGFunction\" --s3-bucket \"cru-lambda-functions\" --s3-key \"ASGfunction.zip\"",
+    "s3": "aws s3 cp ../ASGfunction.zip ${npm_config_s3_bucket_url}",
+    "updateLambda": "aws lambda update-function-code --function-name \"${npm_config_lambda_function}\" --s3-bucket \"${npm_config_s3_bucket}\" --s3-key \"ASGfunction.zip\"",
     "deploy": "npm run zip && npm run s3 && npm run updateLambda"
   },
   "dependencies": {
