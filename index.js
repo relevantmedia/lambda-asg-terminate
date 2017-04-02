@@ -19,25 +19,4 @@ function cwBuild(cwEvent, context, cb) {
   })
 
   cw.parseEvent(cwEvent, context, done)
-
-  // CloudWatch currently has no setting to determine whether errors should be retried
-  // By default they are, which we don't want, so always try to callback successfully
-  // var done = utils.once(function cwDone(err, data) {
-  //   cb(null, data)
-  // })
-  //
-  // cw.parseEvent(cwEvent, function(err, buildData) {
-  //   if (err) return done(err)
-  //
-  //   if (buildData.ignore) {``
-  //     console.log(buildData.ignore)
-  //     console.log('Not running build')
-  //     return done()
-  //   }
-  //
-  //   console.log('Build data', buildData)
-  //
-  //   actions.run(buildData, context, done)
-  // })
-
 }
